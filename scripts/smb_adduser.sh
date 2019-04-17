@@ -7,19 +7,17 @@ PASS=$2
 
 PROJEKTNAME=$USER
 
-useradd -K UID_MIN=2000 -s /bin/false $USER
-mysmbpasswd -a "$USER" "$PASS"
+useradd -m -K UID_MIN=2000 -s /bin/false $USER
+LANG=C mysmbpasswd -a "$USER" "$PASS"
 
-## Share Ordner erstellen:
-
-mkdir -m 700 "/srv/samba/$PROJEKTNAME"
-chown $USER:$USER "/srv/samba/$PROJEKTNAME"
+test -d /etc/samba/shares || mkdir -p /etc/samba/shares
 
 ## Share anlegen:
 
 echo "[$PROJEKTNAME]
-path = /srv/samba/$PROJEKTNAME
+path = /home/$PROJEKTNAME
 writable = yes
+browseable = yes
 valid users = $USER" > /etc/samba/shares/$PROJEKTNAME
 
 ## Share hinzufügen:

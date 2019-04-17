@@ -1,8 +1,6 @@
 #!/bin/sh
 
-set -e
-
-BACKUP=/var/backup
+BACKUP=/home/archive
 USER=$1
 PROJEKTNAME=$USER
 
@@ -18,13 +16,13 @@ deluser $USER
 
 ## Share Ordner löschen:
 
-mkdir -p $BACKUP
+test -d $BACKUP || mkdir -p $BACKUP
 
-ts=`date "+%s"`
+ts=$(date "+%Y%m%d%H%M%S")
 targetdir=${BACKUP}/${PROJEKTNAME}.${ts}
-sharedir=/srv/samba/$PROJEKTNAME
+sharedir=/home/$PROJEKTNAME
 i=0
-while [ $i < 100 ]; do
+while [ $i -lt 100 ]; do
 	if [ ! -d ${targetdir}.$i ]; then
 		mv $sharedir ${targetdir}.$i
 		break
@@ -41,4 +39,4 @@ rm /etc/samba/shares/$PROJEKTNAME
 
 ## Share austragen:
 
-sed -i '/include = \/etc\/samba\/shares\/$PROJEKTNAME/d' /etc/samba/smbshares.conf
+sed -i "/include = \/etc\/samba\/shares\/$PROJEKTNAME/d" /etc/samba/smbshares.conf
