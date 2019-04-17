@@ -17,7 +17,13 @@ test -d /etc/samba/shares || mkdir -p /etc/samba/shares
 echo "[$PROJEKTNAME]
 path = /home/$PROJEKTNAME
 writable = yes
-browseable = yes
+browseable = no
+create mask = 0600
+directory mask = 0700
+spotlight = yes
+vfs objects = catia fruit streams_xattr
+fruit:aapl = yes
+fruit:time machine = yes
 valid users = $USER" > /etc/samba/shares/$PROJEKTNAME
 
 ## Share hinzufügen:
