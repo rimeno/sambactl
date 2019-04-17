@@ -27,3 +27,11 @@ install: build
 	install scripts/smb_deluser.sh ${INSTALLDIR}/smb_deluser
 	mkdir -p ${WEBROOT}
 	cp -r webroot/* ${WEBROOT}
+
+uninstall:
+	rm -f ${INSTALLDIR}/sambactl-worker
+	rm -f ${INSTALLDIR}/sambactl-server
+	rm -f ${INSTALLDIR}/mysmbpasswd
+	rm -f ${INSTALLDIR}/smb_adduser
+	rm -f ${INSTALLDIR}/smb_deluser
+	rm -rf ${WEBROOT}
