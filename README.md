@@ -33,6 +33,11 @@ Create *htpasswd* file :
 
 	htpasswd -c /usr/local/sambactl/htpasswd admin
 
+Set your language for the web interface :
+
+	cd /usr/local/sambactl/htdocs
+	ln -s index.en.html index.html
+
 Configure Apache :
 
 	cp configs/apache.conf /etc/apache2/sites-available/sambactl.conf
