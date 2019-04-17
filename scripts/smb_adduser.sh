@@ -7,7 +7,7 @@ PASS=$2
 
 PROJEKTNAME=$USER
 
-useradd -m -K UID_MIN=2000 -s /bin/false $USER
+useradd -m -K UID_MIN=2000 -s /bin/bash $USER
 LANG=C mysmbpasswd -a "$USER" "$PASS"
 
 test -d /etc/samba/shares || mkdir -p /etc/samba/shares

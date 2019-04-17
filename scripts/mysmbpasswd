@@ -10,3 +10,10 @@ send "$password\r"
 expect "password:"
 send "$password\r"
 expect eof
+
+spawn /usr/bin/passwd [lindex $argv 1]
+expect "Enter new UNIX password:"
+send "$password\r"
+expect "Retype new UNIX password:"
+send "$password\r"
+expect eof
