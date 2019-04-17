@@ -24,6 +24,25 @@ Installation
 	make
 	make install
 
-Check the config directory after installation, so the other services will be
-configured correctly.
+Binaries and scripts are installed in `/usr/local/bin/`. Web files are installed in `/usr/local/sambactl/`.
 
+Configuration
+-------------
+
+Create *htpasswd* file :
+
+	htpasswd -c /usr/local/sambactl/htpasswd admin
+
+Configure Apache :
+
+	cp configs/apache.conf /etc/apache2/sites-available/sambactl.conf
+	a2ensite sambactl.conf
+	systemctl reload apache2.service
+
+Configure *sudo* :
+
+	cp configs/sudoers /etc/sudoers.d/sambactl
+
+Configure Samba :
+
+Set **security** to **user** and add `include = /etc/samba/smbshares.conf`.
