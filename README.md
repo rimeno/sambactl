@@ -11,7 +11,7 @@ writing no additional features are planned.
 Dependencies
 ------------
 
-* Samba
+* Samba (> 4.8 for timemachine compatibility)
 * Apache (you may need to change stuff for other httpds)
 * mod\_fastcgi
 * Sudo (So sambactl-worker has the rights to manage samba)
