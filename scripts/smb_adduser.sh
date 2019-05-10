@@ -26,7 +26,7 @@ vfs objects = catia fruit streams_xattr
 fruit:aapl = yes
 fruit:time machine = yes
 valid users = $USER
-include /etc/samba/users/%U.conf" > /etc/samba/shares/$PROJEKTNAME
+include = /etc/samba/users/%U.conf" > /etc/samba/shares/$PROJEKTNAME
 
 ## Share hinzufügen:
 
