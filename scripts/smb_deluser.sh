@@ -40,3 +40,4 @@ rm /etc/samba/shares/$PROJEKTNAME
 ## Share austragen:
 
 sed -i "/include = \/etc\/samba\/shares\/$PROJEKTNAME/d" /etc/samba/smbshares.conf
+rm /etc/samba/users/${USER}.conf
